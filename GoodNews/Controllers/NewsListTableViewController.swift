@@ -37,6 +37,19 @@ class NewsListTableViewController: UITableViewController {
         return self.articleListVM == nil ? 0 : self.articleListVM.numberOfSections;
     }
     
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.articleListVM.numberOfRowsInSection(section)
+    }
     
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "ArticleTableViewCell", for: indexPath) as? ArticleTableViewCell else {
+            fatalError("Cell not found")
+        }
+        
+        let articleVM = self.articleListVM.articleAtIndex(indexPath.row)
+        cell.titleLabel.text = articleVM.title
+        cell.descriptionLabel.text = articleVM.description
+        return cell
+    }
     
 }

@@ -3,7 +3,6 @@
 //  GoodNews
 //
 //  Created by Gurjinder Singh on 30/07/23.
-//  Copyright © 2023 Mohammad Azam. All rights reserved.
 //
 
 import Foundation
@@ -37,9 +36,9 @@ struct ArticleViewModel {
 extension ArticleViewModel {
     
     var title: String {
-        return self.article.title
+        return self.article.title ?? ""
     }
     var description: String {
-        return self.article.description
+        return self.article.description ?? ""
     }
 }
